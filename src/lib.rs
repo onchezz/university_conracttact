@@ -1,5 +1,4 @@
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-// use near_sdk::bs58::decode::Result;
 use near_sdk::near_bindgen;
 use near_sdk::serde::{Deserialize, Serialize};
 use near_sdk::{env, log};
@@ -137,7 +136,6 @@ impl Department {
     match self.courses.get(course_name) {
       Some(c) => {
         let students_in_course = c.view_students_in_course();
-        // let students_in_course = c.as_ref().unwrap().view_students_in_course();
         Ok(Students(students_in_course))
       }
       None => Err(ContractErr(String::from("no results"))),
